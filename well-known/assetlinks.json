@@ -1,0 +1,9 @@
+[{
+  relation [delegate_permissioncommon.handle_all_urls],
+  target {
+    namespace android_app,
+    package_name com.example.testdeeplink0515,
+    sha256_cert_fingerprints
+    [A6736F3227B1A17D61DDDBADD665772069357F27F3A800DBB6F250D13C1CACC2]
+  }
+}]
