@@ -1,250 +1,200 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  
-  
-  <title>LiHan_Notes</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="LiHan_Notes">
-<meta property="og:url" content="https://github.com/encorex32268/index.html">
-<meta property="og:site_name" content="LiHan_Notes">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="LiHan Chen">
-<meta property="article:tag" content="Note">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/encorex32268/atom.xml" title="LiHan_Notes" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/encorex32268/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiHan Chen | Android Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: linear-gradient(to right, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .dark body { background-color: #0f172a; color: #f8fafc; }
+        .transition-all { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 transition-colors duration-300">
 
-  
-  
-<link rel="stylesheet" href="/encorex32268/css/style.css">
+    <nav class="fixed top-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-5xl mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="font-bold text-xl gradient-text">LiHan.Dev</div>
+            <div class="flex items-center gap-4">
+                <select id="langSelect" onchange="changeLang(this.value)" class="bg-transparent border border-slate-300 dark:border-slate-600 rounded px-2 py-1 text-sm dark:text-white">
+                    <option value="zh">繁中</option>
+                    <option value="en">EN</option>
+                    <option value="jp">日本語</option>
+                </select>
+                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-all">
+                    <i id="themeIcon" class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-  
-    
-<link rel="stylesheet" href="/encorex32268/fancybox/jquery.fancybox.min.css">
+    <header class="max-w-4xl mx-auto pt-32 pb-16 px-6 text-center">
+        <h1 class="text-5xl font-extrabold mb-4 gradient-text" id="name">陳立翰 LiHan Chen</h1>
+        <p class="text-xl text-slate-600 dark:text-slate-400 mb-8" id="title">Android 工程師 / KMP 開發者</p>
+        <div class="flex justify-center gap-8 text-2xl">
+            <a href="https://github.com/encorex32268" target="_blank" class="hover:text-blue-500 transition-all"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/立翰-陳-45005a190" target="_blank" class="hover:text-blue-500 transition-all"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:encorex32268@gmail.com" class="hover:text-blue-500 transition-all"><i class="fas fa-envelope"></i></a>
+        </div>
+    </header>
 
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
+    <section class="max-w-4xl mx-auto px-6 mb-16">
+        <h2 class="text-2xl font-bold mb-10 flex items-center gap-3" id="expLabel">
+            <i class="fas fa-briefcase text-blue-500"></i> 工作經歷
+        </h2>
+        <div id="experienceList" class="space-y-10">
+            </div>
+    </section>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/encorex32268/" id="logo">LiHan_Notes</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/encorex32268/">Home</a>
-        
-          <a class="main-nav-link" href="/encorex32268/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/encorex32268/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/encorex32268"></form>
-      </div>
-    </div>
-  </div>
-</header>
+    <section class="max-w-4xl mx-auto px-6 mb-16">
+        <h2 class="text-2xl font-bold mb-10 flex items-center gap-3" id="projectLabel">
+            <i class="fas fa-code text-blue-500"></i> 個人作品
+        </h2>
+        <div id="projectList" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            </div>
+    </section>
 
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/encorex32268/2023/01/02/test/" class="article-date">
-  <time class="dt-published" datetime="2023-01-02T07:46:31.000Z" itemprop="datePublished">2023-01-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/encorex32268/2023/01/02/test/">test</a>
-    </h1>
-  
+    <section class="max-w-4xl mx-auto px-6 mb-24 text-center">
+        <h2 class="text-2xl font-bold mb-8" id="skillLabel">核心技術</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full font-medium">Kotlin</span>
+            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full font-medium">Jetpack Compose</span>
+            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full font-medium">KMP / CMP</span>
+            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full font-medium">MVI Architecture</span>
+            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full font-medium">Spring Boot</span>
+            <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full font-medium">Japanese (N2)</span>
+        </div>
+    </section>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/encorex32268/2023/01/02/test/" data-id="clcfm6msd00017x4x5dt4advt" data-title="test" class="article-share-link">Share</a>
-      
-      
-      
+    <footer class="text-center py-10 border-t border-slate-200 dark:border-slate-800 text-slate-400 text-sm">
+        <p>© 2026 LiHan Chen. Built with Tailwind CSS & Love.</p>
     </footer>
-  </div>
-  
-</article>
 
+    <script>
+        const translations = {
+            zh: {
+                name: "陳立翰 LiHan Chen",
+                title: "Android 工程師 / KMP 開發者",
+                expLabel: "工作經歷",
+                projectLabel: "個人作品",
+                skillLabel: "核心技術",
+                experiences: [
+                    { company: "NEC (台北內湖)", role: "Android Developer", date: "2024.03 - 現在", desc: "採用 MVI 架構與 Jetpack Compose 開發用戶端 App。負責新功能開發、Bug 修復與效能優化。" },
+                    { company: "Clara (東京港區)", role: "Mobile Developer", date: "2022.11 - 2025.01", desc: "利用 KMP 與 CMP 技術開發招聘 App。成功為公司節省了 75% 的行動端開發成本。" },
+                    { company: "ZTE (東京中央區)", role: "QA Test Engineer", date: "2019.05 - 2022.11", desc: "使用 QXDM 工具測試 5G 信號與網路品質。針對 Android 手機硬體（如 GPS）及軟體進行深度驗證。" },
+                    { company: "Asgard (台北)", role: "Software Engineer", date: "2017.07 - 2019.03", desc: "使用 Java, Spring Boot 與 MySQL 開發後端。維護銀行、股市及保險系統的大型改版計畫。" },
+                    { company: "Foodomo (台北)", role: "Mobile Developer Intern", date: "2015.01 - 2015.09", desc: "使用 Java 與 Objective-C 開發 App。開發照片換積分功能以收集飲食大數據。" }
+                ],
+                projects: [
+                    { name: "QRCraft", url: "https://github.com/encorex32268/QRCraft", desc: "現代化 QR Code 工具，支援 Material 3 設計規範。" },
+                    { name: "VibePlayer", url: "https://github.com/encorex32268/VibePlayer", desc: "Compose 開發的簡約音樂播放器，專注於流暢互動。" },
+                    { name: "MoneyManagerKMP", url: "https://github.com/encorex32268/MoneyManagerKMP", desc: "KMP 跨平台記帳 App，實踐 iOS/Android 邏輯共享。" },
+                    { name: "Jiburi", url: "https://github.com/encorex32268/Jiburi", desc: "吉卜力 API 展示 App，運用現代化架構呈現電影資訊。" },
+                    { name: "JPractice", url: "https://github.com/encorex32268/JPractice", desc: "日語五十音練習工具，已在 Google Play 上架運行。" }
+                ]
+            },
+            en: {
+                name: "LiHan Chen",
+                title: "Android Engineer / KMP Developer",
+                expLabel: "Experience",
+                projectLabel: "Projects",
+                skillLabel: "Core Skills",
+                experiences: [
+                    { company: "NEC (Taipei)", role: "Android Developer", date: "Mar 2024 - Present", desc: "Developing apps using MVI and Jetpack Compose. Focused on features and bug fixing." },
+                    { company: "Clara (Tokyo)", role: "Mobile Developer", date: "Nov 2022 - Jan 2025", desc: "Built recruiting apps using KMP/CMP, saving the company 75% in development costs." },
+                    { company: "ZTE (Tokyo)", role: "QA Test Engineer", date: "May 2019 - Nov 2022", desc: "5G signal and network testing via QXDM tools. Verified Android HW/SW features." },
+                    { company: "Asgard (Taipei)", role: "Software Engineer", date: "Jul 2017 - Mar 2019", desc: "Backend dev with Java/Spring Boot. Maintained banking and insurance systems." },
+                    { company: "Foodomo (Taipei)", role: "Mobile Intern", date: "Jan 2015 - Sep 2015", desc: "Developed Android/iOS apps. Created photo-reward features for Big Data collection." }
+                ],
+                projects: [
+                    { name: "QRCraft", url: "https://github.com/encorex32268/QRCraft", desc: "Modern QR scanner & generator following Material 3 guidelines." },
+                    { name: "VibePlayer", url: "https://github.com/encorex32268/VibePlayer", desc: "Minimalist music player built with Compose for smooth UI." },
+                    { name: "MoneyManagerKMP", url: "https://github.com/encorex32268/MoneyManagerKMP", desc: "Cross-platform expense tracker sharing logic via KMP." },
+                    { name: "Jiburi", url: "https://github.com/encorex32268/Jiburi", desc: "Ghibli API showcase app presenting movie info and stills." },
+                    { name: "JPractice", url: "https://github.com/encorex32268/JPractice", desc: "Japanese Kana practice tool, live on Google Play Store." }
+                ]
+            },
+            jp: {
+                name: "チェン リハン (LiHan Chen)",
+                title: "Android エンジニア / KMP デベロッパー",
+                expLabel: "職務経歴",
+                projectLabel: "プロジェクト",
+                skillLabel: "スキル",
+                experiences: [
+                    { company: "NEC (台北)", role: "Android デベロッパー", date: "2024.03 - 現在", desc: "MVI と Jetpack Compose を使用したアプリ開発、バグ修正および機能追加。" },
+                    { company: "クララ (東京)", role: "モバイルデベロッパー", date: "2022.11 - 2025.01", desc: "KMP/CMP を導入し、モバイル開発コストを 75% 削減することに成功。" },
+                    { company: "ZTE (東京)", role: "QAテストエンジニア", date: "2019.05 - 2022.11", desc: "QXDM を用いた 5G 通信テスト。Android の HW/SW 検証を担当。" },
+                    { company: "アスガルド (台北)", role: "ソフトウェアエンジニア", date: "2017.07 - 2019.03", desc: "Java/Spring Boot によるバックエンド開発。金融・保険システムを担当。" },
+                    { company: "Foodomo (台北)", role: "開発インターン", date: "2015.01 - 2015.09", desc: "Java/Obj-C でアプリ開発。ビッグデータ収集用の機能を実装。" }
+                ],
+                projects: [
+                    { name: "QRCraft", url: "https://github.com/encorex32268/QRCraft", desc: "Material 3 対応のモダンな QR コードスキャナー。" },
+                    { name: "VibePlayer", url: "https://github.com/encorex32268/VibePlayer", desc: "Compose で作成されたシンプルで滑らかな音楽プレイヤー。" },
+                    { name: "MoneyManagerKMP", url: "https://github.com/encorex32268/MoneyManagerKMP", desc: "iOS/Android のロジックを共有する KMP 家計簿アプリ。" },
+                    { name: "Jiburi", url: "https://github.com/encorex32268/Jiburi", desc: "ジブリ API を活用した映画情報閲覧アプリ。" },
+                    { name: "JPractice", url: "https://github.com/encorex32268/JPractice", desc: "日本語五十音の学習ツール。Google Play で公開中。" }
+                ]
+            }
+        };
 
+        function changeLang(lang) {
+            const data = translations[lang];
+            document.getElementById('name').innerText = data.name;
+            document.getElementById('title').innerText = data.title;
+            document.getElementById('expLabel').innerHTML = `<i class="fas fa-briefcase text-blue-500"></i> ` + data.expLabel;
+            document.getElementById('projectLabel').innerHTML = `<i class="fas fa-code text-blue-500"></i> ` + data.projectLabel;
+            document.getElementById('skillLabel').innerText = data.skillLabel;
 
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/encorex32268/2023/01/02/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-01-02T03:37:56.344Z" itemprop="datePublished">2023-01-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/encorex32268/2023/01/02/hello-world/">Hello World</a>
-    </h1>
-  
+            document.getElementById('experienceList').innerHTML = data.experiences.map(exp => `
+                <div class="relative pl-8 border-l-2 border-slate-200 dark:border-slate-700">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.4)]"></div>
+                    <h3 class="text-xl font-bold dark:text-white">${exp.role}</h3>
+                    <p class="text-blue-600 dark:text-blue-400 font-medium">${exp.company} | ${exp.date}</p>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400 leading-relaxed">${exp.desc}</p>
+                </div>
+            `).join('');
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            document.getElementById('projectList').innerHTML = data.projects.map(proj => `
+                <div class="group border border-slate-200 dark:border-slate-700 p-6 rounded-2xl hover:shadow-xl transition-all hover:-translate-y-1 bg-white dark:bg-slate-800/50">
+                    <h3 class="font-bold text-lg mb-2 group-hover:text-blue-500 transition-colors">${proj.name}</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 h-12 overflow-hidden text-ellipsis">${proj.desc}</p>
+                    <a href="${proj.url}" target="_blank" class="inline-flex items-center gap-1 text-blue-500 text-sm font-semibold hover:underline">
+                        GitHub Repo <i class="fas fa-external-link-alt text-xs"></i>
+                    </a>
+                </div>
+            `).join('');
+        }
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/encorex32268/2023/01/02/hello-world/" data-id="clcfm6msb00007x4x23zo1697" data-title="Hello World" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/encorex32268/archives/2023/01/">January 2023</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/encorex32268/2023/01/02/test/">test</a>
-          </li>
-        
-          <li>
-            <a href="/encorex32268/2023/01/02/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2023 LiHan Chen<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/encorex32268/" class="mobile-nav-link">Home</a>
-  
-    <a href="/encorex32268/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/encorex32268/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/encorex32268/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/encorex32268/js/script.js"></script>
-
-
-
-
-
-  </div>
+        window.onload = () => {
+            changeLang('zh');
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                document.getElementById('themeIcon').className = 'fas fa-sun';
+            }
+        };
+    </script>
 </body>
 </html>
