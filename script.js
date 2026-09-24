@@ -361,7 +361,12 @@ const projectsData = {
         image: null,
         icon: "app_icons/SmartStep.webp",
         github: "https://github.com/encorex32268/SmartStep",
-        tech: ["Kotlin", "Jetpack Compose", "Gemini AI", "Clean Architecture", "MVI", "Room", "Koin", "Foreground Service", "WorkManager"]
+        tech: ["Kotlin", "Jetpack Compose", "Gemini AI", "Clean Architecture", "MVI", "Room", "Koin", "Foreground Service", "WorkManager"],
+        desc: {
+            zh: "結合 Google Gemini AI 健走教練的現代化 Android 計步應用程式。具備即時步數追蹤、前台服務 (Foreground Service) 背景監控、每週數據分析圖表，採用 Clean Architecture (MVI 架構、Jetpack Compose、Room、Koin)。",
+            en: "A modern Android pedometer app featuring Google Gemini AI coaching, real-time step tracking with Foreground Service, weekly analytics, and Clean Architecture (MVI, Jetpack Compose, Room, Koin).",
+            ja: "Google Gemini AIウォーキングコーチを統合したモダンなAndroid歩数計アプリです。リアルタイムの歩数計測、フォアグラウンドサービスによるバックグラウンド監視、週間分析レポートを提供し、Clean Architecture（MVI、Jetpack Compose、Room、Koin）を採用しています。"
+        }
     }
 };
 
@@ -388,11 +393,36 @@ function showProjectDetails(appName) {
     
     activeProjectName = appName;
     
+    // Highlight clicked launcher icon
+    document.querySelectorAll('.launcher-app-item').forEach(el => {
+        if (el.getAttribute('data-app') === appName) {
+            el.classList.add('active');
+        } else {
+            el.classList.remove('active');
+        }
+    });
+    
     // Hide placeholder
-    detailsPlaceholder.classList.add('hidden');
+    if (detailsPlaceholder) {
+        detailsPlaceholder.classList.add('hidden');
+        detailsPlaceholder.style.display = 'none';
+    }
+    
+    // Show content container
+    if (detailsContent) {
+        detailsContent.classList.remove('hidden');
+        detailsContent.style.display = 'block';
+    }
     
     // Fetch translation strings
     const currentT = translations[currentLang] || translations['zh'];
+    
+    // Description text with multiple fallbacks
+    const descText = (currentT && currentT[appName + 'Desc']) || 
+                     (data.desc && data.desc[currentLang]) || 
+                     (data.desc && data.desc['zh']) || 
+                     (translations['zh'] && translations['zh'][appName + 'Desc']) || 
+                     "";
     
     // Generate technology tags
     const techTagsHtml = data.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
@@ -436,7 +466,7 @@ function showProjectDetails(appName) {
             <div class="details-info">
                 <div>
                     <h4 class="details-subtitle">${currentT.overviewTitle}</h4>
-                    <p class="details-desc">${currentT[appName + 'Desc']}</p>
+                    <p class="details-desc">${descText}</p>
                 </div>
                 
                 <div>
@@ -455,8 +485,6 @@ function showProjectDetails(appName) {
         </div>
     `;
     
-    detailsContent.classList.remove('hidden');
-    
     // Smooth scroll down to details section
     if (detailsSection) {
         detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -466,4 +494,5 @@ function showProjectDetails(appName) {
 // Initial setup
 updateDateTime();
 setInterval(updateDateTime, 30000);
-setLanguage('en'); // Default to English
+const initialLang = document.querySelector('.lang-btn.active')?.getAttribute('data-lang') || 'zh';
+setLanguage(initialLang);

@@ -489,7 +489,13 @@ body {
     transform: scale(1.08);
 }
 
+.launcher-app-item.active {
+    transform: scale(1.08);
+}
 
+.launcher-app-item.active .app-icon-wrapper {
+    box-shadow: 0 0 0 3px var(--accent-color), 0 0 16px rgba(99, 102, 241, 0.6);
+}
 
 /* App Icon style */
 .app-icon {
@@ -497,6 +503,8 @@ body {
     height: 100%;
     object-fit: cover;
     pointer-events: none;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
 }
 
 .app-label {
@@ -905,6 +913,11 @@ body {
     justify-content: center;
     overflow: hidden;
     position: relative;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
 }
 
 .details-placeholder {
@@ -916,6 +929,10 @@ body {
     color: var(--text-secondary);
     height: 180px;
     gap: 12px;
+}
+
+.details-placeholder.hidden {
+    display: none !important;
 }
 
 .placeholder-icon {
@@ -944,8 +961,9 @@ body {
     animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.hidden,
 .details-content.hidden {
-    display: none;
+    display: none !important;
 }
 
 @keyframes fadeInUp {
@@ -1353,18 +1371,23 @@ body {
     height: 72px;
     background: rgba(99, 102, 241, 0.12);
     border: 1px solid rgba(99, 102, 241, 0.25);
-    border-radius: 20px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 6px;
     box-shadow: 0 4px 16px rgba(99, 102, 241, 0.15);
+    overflow: hidden;
 }
 
 .placeholder-icon-img {
     width: 50px;
     height: 50px;
     object-fit: contain;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
 }
 
 .placeholder-title {
