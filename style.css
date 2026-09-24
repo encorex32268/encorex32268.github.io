@@ -1325,6 +1325,61 @@ body {
     transform: scale(1.02);
 }
 
+/* Placeholder Card when App Screenshot is Not Yet Available */
+.screenshot-placeholder-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 220px;
+    min-height: 340px;
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.7) 100%);
+    border: 2px dashed rgba(99, 102, 241, 0.35);
+    border-radius: 18px;
+    padding: 30px 20px;
+    box-shadow: var(--shadow-md);
+    gap: 14px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.screenshot-placeholder-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(99, 102, 241, 0.6);
+}
+
+.placeholder-icon-wrap {
+    width: 72px;
+    height: 72px;
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.15);
+}
+
+.placeholder-icon-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.placeholder-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.2px;
+}
+
+.placeholder-subtitle {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
 /* --- Language Switcher Styling --- */
 .lang-switcher {
     display: flex;

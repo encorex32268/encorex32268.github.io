@@ -64,6 +64,9 @@ const translations = {
         qrcraftDesc: "強大的 QR Code 掃描器與產生器。結合 CameraX 與 Google ML Kit 提供極速掃描體驗，並支援儲存歷史紀錄與產生自訂風格的 QR Code。",
         vibeplayerDesc: "一款美觀、流暢的本地音樂播放器。提供專輯分類、播放清單管理，以及精美的音量視覺化波形面板，支援後台背景播放。",
         moneymanagerDesc: "基於 Kotlin Multiplatform (KMP) 與 Compose Multiplatform 打造的跨平台記帳管理工具。支援 Android 與 iOS 雙平台，提供收支記帳與類別統計分析。",
+        smartstepDesc: "結合 Google Gemini AI 健走教練的現代化 Android 計步應用程式。具備即時步數追蹤、前台服務 (Foreground Service) 背景監控、每週數據分析圖表，採用 Clean Architecture (MVI 架構、Jetpack Compose、Room、Koin)。",
+        screenComingSoonTitle: "截圖即將推出",
+        screenComingSoonDesc: "UI 截圖正在準備中。歡迎點擊上方按鈕前往 GitHub 查看完整原始碼與 README！",
         
         // Resume Modal
         modalRole: "Android 開發者 | Mobile Developer",
@@ -114,6 +117,9 @@ const translations = {
         qrcraftDesc: "A powerful QR code scanner and generator. Combining CameraX and Google ML Kit to provide high-speed scanning, it supports saving history and generating custom-styled QR codes.",
         vibeplayerDesc: "An elegant and fluid local music player. Features album categorization, playlist management, and a beautiful dynamic visualizer panel, with full support for background audio playback.",
         moneymanagerDesc: "A cross-platform money management tool built with Kotlin Multiplatform (KMP) and Compose Multiplatform. Supporting both Android and iOS, it provides expense tracking and category analytics.",
+        smartstepDesc: "A modern Android pedometer app featuring Google Gemini AI coaching, real-time step tracking with Foreground Service, weekly analytics, and Clean Architecture (MVI, Jetpack Compose, Room, Koin).",
+        screenComingSoonTitle: "Screenshot Coming Soon",
+        screenComingSoonDesc: "UI screenshots are currently being prepared. Feel free to click the button above to view the source code and README on GitHub!",
         
         // Resume Modal
         modalRole: "Android Developer | Mobile Developer",
@@ -164,6 +170,9 @@ const translations = {
         qrcraftDesc: "強力なQRコードスキャナーおよび生成アプリです。CameraXとGoogle ML Kitを組み合わせて高速スキャンを提供し、スキャン履歴の保存やカスタマイズされたスタイルのQRコード生成をサポートします。",
         vibeplayerDesc: "美しく滑らかなローカル音楽プレーヤーです。アルバム分類、プレイリスト管理、美しいダイナミックなビジュアライザーパネルを提供し、バックグラウンド再生を完全にサポートしています。",
         moneymanagerDesc: "Kotlin Multiplatform（KMP）とCompose Multiplatformで構築されたクロスプラットフォーム家計簿ツールです。AndroidとiOSの両方をサポートし、収支の記録やカテゴリ別の分析機能を提供します。",
+        smartstepDesc: "Google Gemini AIウォーキングコーチを統合したモダンなAndroid歩数計アプリです。リアルタイムの歩数計測、フォアグラウンドサービスによるバックグラウンド監視、週間分析レポートを提供し、Clean Architecture（MVI、Jetpack Compose、Room、Koin）を採用しています。",
+        screenComingSoonTitle: "スクリーンショット準備中",
+        screenComingSoonDesc: "UIスクリーンショットは現在準備中です。上のボタンからGitHubでソースコードと詳細をご確認いただけます。",
         
         // Resume Modal
         modalRole: "Androidデベロッパー | モバイルデベロッパー",
@@ -345,6 +354,14 @@ const projectsData = {
         image: "app_screen/MoneyManager.png",
         github: "https://github.com/encorex32268/MoneyManagerKMP",
         tech: ["Kotlin", "Kotlin Multiplatform (KMP)", "Compose Multiplatform", "SQLDelight", "Ktor Client", "MVI StateFlow"]
+    },
+    smartstep: {
+        title: "SmartStep",
+        repo: "SmartStep",
+        image: null,
+        icon: "app_icons/SmartStep.webp",
+        github: "https://github.com/encorex32268/SmartStep",
+        tech: ["Kotlin", "Jetpack Compose", "Gemini AI", "Clean Architecture", "MVI", "Room", "Koin", "Foreground Service", "WorkManager"]
     }
 };
 
@@ -359,8 +376,6 @@ const detailsSection = document.getElementById('detailsSection');
 document.querySelectorAll('.launcher-app-item').forEach(item => {
     item.addEventListener('click', () => {
         const appName = item.getAttribute('data-app');
-        
-
         
         // Show project screenshot and GitHub source below
         showProjectDetails(appName);
@@ -381,6 +396,26 @@ function showProjectDetails(appName) {
     
     // Generate technology tags
     const techTagsHtml = data.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
+    
+    // Build screenshot or placeholder preview HTML
+    let previewHtml;
+    if (data.image) {
+        previewHtml = `
+            <div style="font-size:0.75rem; color:var(--text-secondary); margin-bottom:5px;">${currentT.screenshotTitle}</div>
+            <img src="${data.image}" alt="${data.title} ${currentT.screenshotTitle}" class="details-screenshot-img" onerror="this.outerHTML='<div class=\\'screenshot-placeholder-card\\'><div class=\\'placeholder-icon-wrap\\'><img src=\\'${data.icon || 'app_icons/SmartStep.webp'}\\' class=\\'placeholder-icon-img\\'></div><div class=\\'placeholder-title\\'>${currentT.screenComingSoonTitle}</div><div class=\\'placeholder-subtitle\\'>${currentT.screenComingSoonDesc}</div></div>'">
+        `;
+    } else {
+        previewHtml = `
+            <div style="font-size:0.75rem; color:var(--text-secondary); margin-bottom:5px;">${currentT.screenshotTitle}</div>
+            <div class="screenshot-placeholder-card">
+                <div class="placeholder-icon-wrap">
+                    <img src="${data.icon || 'app_icons/SmartStep.webp'}" alt="${data.title}" class="placeholder-icon-img">
+                </div>
+                <div class="placeholder-title">${currentT.screenComingSoonTitle}</div>
+                <div class="placeholder-subtitle">${currentT.screenComingSoonDesc}</div>
+            </div>
+        `;
+    }
     
     // Build and inject Details HTML (restoring project description and tech tags)
     detailsContent.innerHTML = `
@@ -414,8 +449,7 @@ function showProjectDetails(appName) {
             
             <div class="details-preview-card" style="background: none; border: none; padding: 0;">
                 <div style="text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px; width: 100%;">
-                    <div style="font-size:0.75rem; color:var(--text-secondary); margin-bottom:5px;">${currentT.screenshotTitle}</div>
-                    <img src="${data.image}" alt="${data.title} ${currentT.screenshotTitle}" class="details-screenshot-img">
+                    ${previewHtml}
                 </div>
             </div>
         </div>
