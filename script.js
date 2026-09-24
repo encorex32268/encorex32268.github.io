@@ -207,6 +207,10 @@ let currentLang = 'en';
 function setLanguage(lang) {
     currentLang = lang;
     
+    // Set document lang attribute for typography & localized font rules
+    const htmlLangMap = { zh: 'zh-TW', en: 'en', ja: 'ja' };
+    document.documentElement.lang = htmlLangMap[lang] || 'zh-TW';
+    
     // Update active lang buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
         if (btn.getAttribute('data-lang') === lang) {
