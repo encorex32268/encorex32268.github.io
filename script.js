@@ -65,6 +65,7 @@ const translations = {
         vibeplayerDesc: "一款美觀、流暢的本地音樂播放器。提供專輯分類、播放清單管理，以及精美的音量視覺化波形面板，支援後台背景播放。",
         moneymanagerDesc: "基於 Kotlin Multiplatform (KMP) 與 Compose Multiplatform 打造的跨平台記帳管理工具。支援 Android 與 iOS 雙平台，提供收支記帳與類別統計分析。",
         smartstepDesc: "結合 Google Gemini AI 健走教練的現代化 Android 計步應用程式。具備即時步數追蹤、前台服務 (Foreground Service) 背景監控、每週數據分析圖表，採用 Clean Architecture (MVI 架構、Jetpack Compose、Room、Koin)。",
+        koalachaDesc: "專為手搖茶飲愛好者打造的現代化線上點餐與數位會員 Android App。採用 Multi-Module Clean Architecture 與 MVI 架構，結合 Firebase (Authentication & Cloud Firestore) 與 Room 資料庫實作 Offline-First 離線優先快取與版本化差量同步。具備 Shared Element 流暢轉場動畫、杯型/冰塊/甜度/加料多重客製化選單、購物車即時聯動、歷史訂單追蹤以及 ZXing 數位會員 QR Code 掃描集點功能。",
         screenComingSoonTitle: "截圖即將推出",
         screenComingSoonDesc: "UI 截圖正在準備中。歡迎點擊上方按鈕前往 GitHub 查看完整原始碼與 README！",
         
@@ -118,6 +119,7 @@ const translations = {
         vibeplayerDesc: "An elegant and fluid local music player. Features album categorization, playlist management, and a beautiful dynamic visualizer panel, with full support for background audio playback.",
         moneymanagerDesc: "A cross-platform money management tool built with Kotlin Multiplatform (KMP) and Compose Multiplatform. Supporting both Android and iOS, it provides expense tracking and category analytics.",
         smartstepDesc: "A modern Android pedometer app featuring Google Gemini AI coaching, real-time step tracking with Foreground Service, weekly analytics, and Clean Architecture (MVI, Jetpack Compose, Room, Koin).",
+        koalachaDesc: "A modern beverage ordering & digital membership Android app built with Multi-Module Clean Architecture and MVI pattern. Combines Firebase (Auth & Cloud Firestore) with Room for Offline-First caching and version-driven synchronization. Features Shared Element transitions, extensive drink customization, real-time cart state management, order tracking, and a digital membership center with ZXing QR code.",
         screenComingSoonTitle: "Screenshot Coming Soon",
         screenComingSoonDesc: "UI screenshots are currently being prepared. Feel free to click the button above to view the source code and README on GitHub!",
         
@@ -171,6 +173,7 @@ const translations = {
         vibeplayerDesc: "美しく滑らかなローカル音楽プレーヤーです。アルバム分類、プレイリスト管理、美しいダイナミックなビジュアライザーパネルを提供し、バックグラウンド再生を完全にサポートしています。",
         moneymanagerDesc: "Kotlin Multiplatform（KMP）とCompose Multiplatformで構築されたクロスプラットフォーム家計簿ツールです。AndroidとiOSの両方をサポートし、収支の記録やカテゴリ別の分析機能を提供します。",
         smartstepDesc: "Google Gemini AIウォーキングコーチを統合したモダンなAndroid歩数計アプリです。リアルタイムの歩数計測、フォアグラウンドサービスによるバックグラウンド監視、週間分析レポートを提供し、Clean Architecture（MVI、Jetpack Compose、Room、Koin）を採用しています。",
+        koalachaDesc: "ティードリンク愛好家のために設計されたモダンなオンライン注文＆デジタル会員Androidアプリ。マルチモジュール設計とMVI＋Clean Architectureを採用し、Firebase（Auth & Cloud Firestore）とRoomを連携させたオフラインファースト同期メカニズムを実装。共有要素遷移（Shared Element）による滑らかなアニメーション、サイズ・氷・甘さ・トッピングの細かなカスタム注文、リアルタイムカート管理、注文履歴追跡、ZXingによるデジタル会員QRコード機能を備えています。",
         screenComingSoonTitle: "スクリーンショット準備中",
         screenComingSoonDesc: "UIスクリーンショットは現在準備中です。上のボタンからGitHubでソースコードと詳細をご確認いただけます。",
         
@@ -371,6 +374,14 @@ const projectsData = {
             en: "A modern Android pedometer app featuring Google Gemini AI coaching, real-time step tracking with Foreground Service, weekly analytics, and Clean Architecture (MVI, Jetpack Compose, Room, Koin).",
             ja: "Google Gemini AIウォーキングコーチを統合したモダンなAndroid歩数計アプリです。リアルタイムの歩数計測、フォアグラウンドサービスによるバックグラウンド監視、週間分析レポートを提供し、Clean Architecture（MVI、Jetpack Compose、Room、Koin）を採用しています。"
         }
+    },
+    koalacha: {
+        title: "Koalacha (Gongcha)",
+        repo: "Koalacha-Gongcha",
+        image: "app_screen/Koalacha_Gongcha.png",
+        icon: "app_icons/Koalacha_Gongcha.webp",
+        github: "https://github.com/encorex32268/Koalacha-Gongcha",
+        tech: ["Kotlin", "Jetpack Compose", "MVI Architecture", "Clean Architecture", "Firebase (Auth & Firestore)", "Room (Offline-First)", "Koin", "Shared Element Transitions", "Credential Manager"]
     }
 };
 

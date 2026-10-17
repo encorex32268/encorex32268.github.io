@@ -1,0 +1,1097 @@
+:root {
+  color-scheme: dark;
+  --bg-obsidian: #090b10;
+  --bg-surface: rgba(18, 22, 32, 0.78);
+  --bg-surface-elevated: rgba(26, 32, 46, 0.85);
+  --bg-input: rgba(12, 15, 23, 0.75);
+  --bg-hover: rgba(255, 255, 255, 0.06);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(255, 255, 255, 0.16);
+  --text-primary: #f3f5f8;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #6366f1;
+  --accent-light: #818cf8;
+  --accent-glow: rgba(99, 102, 241, 0.22);
+  --emerald: #10b981;
+  --emerald-glow: rgba(16, 185, 129, 0.2);
+  --radius-xl: 22px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --font-sans: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: var(--bg-obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 20px;
+  position: relative;
+}
+
+/* 環境微光背景 */
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+.glow-1 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.28), transparent 70%);
+  top: -120px;
+  left: -100px;
+}
+
+.glow-2 {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.2), transparent 70%);
+  bottom: -140px;
+  right: -100px;
+}
+
+/* 主外框容器 */
+.app-shell {
+  position: relative;
+  z-index: 1;
+  width: min(1440px, 100%);
+  height: min(900px, calc(100vh - 32px));
+  min-height: 680px;
+  display: grid;
+  grid-template-columns: minmax(380px, 430px) 1fr;
+  gap: 18px;
+}
+
+/* 玻璃擬態卡片基底 */
+.glass-card {
+  background: var(--bg-surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    0 20px 50px -12px rgba(0, 0, 0, 0.65),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* 左側欄：上方日曆完整伸展 (1fr)、下方聚會卡緊湊自適應 (auto) */
+.left-sidebar {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 14px;
+  min-height: 0;
+}
+
+.picker-card {
+  padding: 18px 20px;
+  justify-content: space-between;
+}
+
+.summary-card {
+  padding: 14px 18px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.card-header.compact {
+  margin-bottom: 8px;
+}
+
+.card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--accent-glow);
+  color: var(--accent-light);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.title-icon.accent-emerald {
+  background: var(--emerald-glow);
+  color: var(--emerald);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.card-title {
+  font-size: 0.96rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.card-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  margin-top: 1px;
+}
+
+/* 膠囊與圖示按鈕 */
+.pill-btn {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.pill-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-color: var(--border-highlight);
+}
+
+.icon-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-glass);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-color: var(--border-highlight);
+}
+
+/* 內嵌日曆 Widget — 寬敞不擠壓 */
+.calendar-widget {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: rgba(9, 11, 16, 0.45);
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  padding: 12px 14px;
+  min-height: 250px;
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.calendar-month-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 4px;
+  flex: 1;
+  min-height: 190px;
+}
+
+.day-cell {
+  width: 100%;
+  height: 100%;
+  min-height: 30px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.84rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.14s ease;
+}
+
+.day-cell:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.day-cell.other-month {
+  color: rgba(100, 116, 139, 0.38);
+}
+
+.day-cell.today {
+  border-color: rgba(99, 102, 241, 0.6);
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.day-cell.selected {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  border-color: transparent;
+}
+
+/* 時間選擇區（支援垂直滾動選時） */
+.time-picker-section {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.time-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.time-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.time-input {
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.86rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.time-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.quick-times {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  max-height: 76px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4px;
+  background: rgba(9, 11, 16, 0.45);
+  border: 1px solid var(--border-glass);
+  border-radius: 10px;
+  scroll-snap-type: y proximity;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
+.quick-times::-webkit-scrollbar {
+  width: 5px;
+}
+
+.quick-times::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 999px;
+}
+
+.quick-times::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.32);
+  border-radius: 999px;
+}
+
+.time-chip {
+  scroll-snap-align: start;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  padding: 6px 4px;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.time-chip:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+.time-chip.active {
+  background: var(--accent-glow);
+  color: var(--accent-light);
+  border-color: rgba(99, 102, 241, 0.5);
+  font-weight: 600;
+}
+
+/* 左下角：精巧緊湊的聚會資訊卡 + 大 Copy 按鈕 */
+.summary-body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.info-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.field-row-split {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 8px;
+}
+
+.field-item {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field-row-split .field-item {
+  grid-template-columns: 34px 1fr;
+}
+
+.field-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.field-input {
+  width: 100%;
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding: 6px 9px;
+  font-size: 0.84rem;
+  font-family: var(--font-sans);
+  transition: all 0.16s ease;
+}
+
+.field-input.mono-url {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: #93c5fd;
+}
+
+.field-input::placeholder {
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+  background: rgba(15, 19, 29, 0.95);
+}
+
+.field-input.flash-highlight {
+  animation: pulseField 0.7s ease;
+}
+
+@keyframes pulseField {
+  0% {
+    border-color: var(--emerald);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+  }
+  100% {
+    border-color: var(--border-glass);
+    box-shadow: none;
+  }
+}
+
+.url-field-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.open-url-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.open-url-btn:hover {
+  background: rgba(59, 130, 246, 0.22);
+  transform: translateY(-1px);
+}
+
+/* 右下角大型 Copy Icon 按鈕區 */
+.copy-action-dock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.big-copy-btn {
+  width: 82px;
+  height: 92px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, rgba(99, 102, 241, 0.22), rgba(79, 70, 229, 0.08));
+  color: var(--text-primary);
+  border: 1px solid rgba(99, 102, 241, 0.42);
+  box-shadow:
+    0 8px 20px -5px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.big-copy-btn:hover {
+  background: linear-gradient(160deg, rgba(99, 102, 241, 0.35), rgba(79, 70, 229, 0.18));
+  border-color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -6px rgba(99, 102, 241, 0.32);
+}
+
+.big-copy-btn:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.big-copy-btn.copied {
+  background: linear-gradient(160deg, rgba(16, 185, 129, 0.3), rgba(5, 150, 105, 0.12));
+  border-color: var(--emerald);
+  color: var(--emerald);
+  box-shadow: 0 12px 26px -6px rgba(16, 185, 129, 0.35);
+}
+
+.copy-btn-caption {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.copy-toast {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--emerald);
+  opacity: 0;
+  height: 14px;
+  line-height: 14px;
+  transform: translateY(2px);
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.copy-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 右側欄位：地圖主舞台 */
+.right-map-stage {
+  padding: 16px;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.search-bar {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  align-items: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 4px 6px 4px 12px;
+  gap: 8px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-bar:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.search-bar-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  color: var(--text-primary);
+  border: none;
+  font-size: 0.88rem;
+  font-family: var(--font-sans);
+  padding: 6px 0;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-submit-btn {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.search-submit-btn:hover {
+  opacity: 0.92;
+}
+
+.map-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quota-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border-glass);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  transition: all 0.15s ease;
+}
+
+.quota-pill:hover {
+  border-color: var(--border-highlight);
+  color: var(--text-primary);
+}
+
+.quota-pill .status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--emerald);
+  box-shadow: 0 0 8px var(--emerald);
+}
+
+.quota-pill.mode-google .status-dot {
+  background: var(--accent-light);
+  box-shadow: 0 0 8px var(--accent-light);
+}
+
+.toolbar-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-glass);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.toolbar-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: var(--border-highlight);
+}
+
+/* 搜尋結果下拉清單 */
+.search-results-list {
+  list-style: none;
+  background: rgba(15, 19, 28, 0.96);
+  border: 1px solid var(--border-highlight);
+  border-radius: var(--radius-md);
+  max-height: 210px;
+  overflow-y: auto;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+.search-result-item {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-glass);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: background 0.12s ease;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background: rgba(99, 102, 241, 0.14);
+}
+
+.search-result-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.search-result-address {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* 地圖畫布區 */
+.map-viewport {
+  flex: 1;
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-glass);
+  min-height: 340px;
+  background: #12161f;
+}
+
+.map-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* 地圖日夜自動切換：06:00~18:00 淺色 (map-theme-light)，18:00~06:00 深色 (map-theme-dark) */
+#osmMapContainer.map-theme-dark .leaflet-tile-pane {
+  filter: invert(92%) hue-rotate(185deg) brightness(96%) contrast(92%);
+  transition: filter 0.35s ease;
+}
+
+#osmMapContainer.map-theme-light .leaflet-tile-pane {
+  filter: none;
+  transition: filter 0.35s ease;
+}
+
+#osmMapContainer .leaflet-popup-content-wrapper,
+#osmMapContainer .leaflet-popup-tip {
+  background: rgba(18, 22, 32, 0.95);
+  color: var(--text-primary);
+  border: 1px solid var(--border-highlight);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+#osmMapContainer .leaflet-control-zoom a {
+  background: rgba(18, 22, 32, 0.9);
+  color: var(--text-primary);
+  border-color: var(--border-glass);
+}
+
+/* 設定 Dialog 視窗 */
+.settings-dialog {
+  margin: auto;
+  width: min(540px, calc(100vw - 32px));
+  background: #131824;
+  color: var(--text-primary);
+  border: 1px solid var(--border-highlight);
+  border-radius: var(--radius-xl);
+  padding: 0;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.8);
+}
+
+.settings-dialog::backdrop {
+  background-color: rgba(4, 6, 12, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.dialog-header h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.dialog-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-top: 3px;
+}
+
+.dialog-body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mode-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mode-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--border-glass);
+  border-radius: 14px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.15s ease;
+}
+
+.mode-option:hover {
+  border-color: var(--border-highlight);
+}
+
+.mode-option:has(input:checked) {
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.mode-option input[type='radio'] {
+  margin-top: 3px;
+  accent-color: var(--accent);
+}
+
+.mode-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.mode-option-content strong {
+  font-size: 0.9rem;
+}
+
+.badge-tag {
+  font-size: 0.68rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+}
+
+.badge-tag.recommended {
+  background: var(--emerald-glow);
+  color: var(--emerald);
+}
+
+.mode-option-content p {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.key-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.key-field-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.key-input {
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 0.88rem;
+  font-family: var(--font-mono);
+}
+
+.key-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.security-hint {
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.cache-stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-glass);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 24px 18px;
+  border-top: 1px solid var(--border-glass);
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+.btn-primary:hover {
+  opacity: 0.92;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-glass);
+}
+
+.btn-secondary:hover {
+  color: var(--text-primary);
+  border-color: var(--border-highlight);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 響應式支援：手機與直向裝置改為「上：日期時間、中：Google Map、下：資訊卡」排版，並支援垂直滾動 */
+@media (max-width: 960px) {
+  html,
+  body {
+    height: auto;
+    min-height: 100dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    display: block;
+    padding: 8px;
+  }
+
+  .app-shell {
+    width: 100%;
+    height: auto;
+    min-height: calc(100dvh - 16px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* 解除左側包裹容器，讓內部兩張卡片直接參與外層の上中下排序 */
+  .left-sidebar {
+    display: contents;
+  }
+
+  /* 上：時間與日期選擇器（支援內部與時間清單垂直滾動） */
+  .picker-card {
+    order: 1;
+    padding: 12px 14px;
+    max-height: 46dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  .picker-card .card-header {
+    margin-bottom: 6px;
+  }
+
+  .picker-card .card-subtitle {
+    display: none;
+  }
+
+  .calendar-widget {
+    flex: 0 0 auto;
+    min-height: auto;
+    padding: 8px 10px;
+  }
+
+  .calendar-grid {
+    min-height: 138px;
+    gap: 2px;
+  }
+
+  .day-cell {
+    min-height: 23px;
+    font-size: 0.78rem;
+  }
+
+  .time-picker-section {
+    margin-top: 8px;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .quick-times {
+    max-height: 84px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  .time-chip {
+    padding: 7px 4px;
+    font-size: 0.8rem;
+  }
+
+  /* 中：Google Map */
+  .right-map-stage {
+    order: 2;
+    flex: 1;
+    padding: 10px;
+    gap: 8px;
+    min-height: 250px;
+  }
+
+  .map-viewport {
+    min-height: 210px;
+    height: 250px;
+  }
+
+  .search-bar {
+    min-width: 0;
+  }
+
+  /* 下：聚會資訊卡 */
+  .summary-card {
+    order: 3;
+    padding: 12px 14px;
+  }
+
+  .summary-card .card-header {
+    display: none; /* 手機版省略標題列，讓上中下一頁完整呈現 */
+  }
+
+  .big-copy-btn {
+    width: 72px;
+    height: 84px;
+  }
+}

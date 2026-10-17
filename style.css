@@ -16,7 +16,7 @@
     
     /* Pixel 10 Pro Dimensions & Specs */
     --phone-width: 320px;
-    --phone-height: 440px; /* Showing upper half */
+    --phone-height: 520px; /* Showing upper phone showcase */
     --phone-radius: 36px;
     --phone-bezel: #1e293b;
     --phone-screen-bg: #101420;
@@ -443,6 +443,13 @@ button, input, select, textarea {
     transform: scale(0.95);
     transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 10;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.pixel-launcher::-webkit-scrollbar {
+    display: none;
 }
 
 .pixel-launcher.active {
