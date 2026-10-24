@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - LocalVault</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --primary: #2563eb;
+            --border: #e2e8f0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0f172a;
+                --card-bg: #1e293b;
+                --text-color: #f8fafc;
+                --text-muted: #94a3b8;
+                --primary: #3b82f6;
+                --border: #334155;
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        h2 {
+            margin-top: 28px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .lang-switch button {
+            background: none;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .lang-switch button.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .lang-section {
+            display: none;
+        }
+
+        .lang-section.active {
+            display: block;
+        }
+
+        .footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="lang-switch">
+            <button onclick="setLang('zh')" id="btn-zh" class="active">繁體中文</button>
+            <button onclick="setLang('en')" id="btn-en">English</button>
+            <button onclick="setLang('ja')" id="btn-ja">日本語</button>
+        </div>
+
+        <!-- 繁體中文 -->
+        <div id="lang-zh" class="lang-section active">
+            <h1>LocalVault 隱私權政策</h1>
+            <p><strong>生效日期：</strong> 2026 年 10 月 24 日</p>
+            <p>LocalVault（以下簡稱「本應用程式」）是由獨立開發者維護的本地離線密碼與資料保管工具。我們極為重視您的個人隱私與數據安全。本隱私權政策旨在向您說明本應用程式如何處理您的資料。</p>
+
+            <h2>1. 資料收集與處理原則</h2>
+            <p><strong>我們不會收集、上傳或傳輸您的任何個人資料。</strong></p>
+            <ul>
+                <li><strong>零網路權限（100% 離線運作）：</strong>
+                    本應用程式在設計與系統宣告上完全未申請網路存取權限（<code>android.permission.INTERNET</code>），因此在技術上無法將您的任何資訊傳輸至任何雲端伺服器或第三方。
+                </li>
+                <li><strong>本地儲存與加密：</strong> 您在應用程式內輸入的所有資料（包含帳號、密碼、備忘錄與自訂欄位），皆僅儲存於您的本機裝置中，並透過 Android Keystore 進行安全加密。
+                </li>
+            </ul>
+
+            <h2>2. 生物辨識身分驗證</h2>
+            <p>本應用程式支援 Android 系統原生的生物辨識功能（如指紋辨識或臉部解鎖）：</p>
+            <ul>
+                <li>生物辨識流程完全由 Android 系統安全框架（BiometricPrompt API）與硬體安全模組（TEE/SE）處理。</li>
+                <li>本應用程式<strong>完全無法存取或儲存</strong>您的任何原始生物辨識特徵資料，僅接收系統傳回的「驗證成功」或「驗證失敗」信號。</li>
+            </ul>
+
+            <h2>3. 第三方服務與追蹤</h2>
+            <p>本應用程式<strong>不包含</strong>任何第三方數據分析套件（如 Google Analytics、Firebase Analytics）、廣告 SDK 或追蹤器，絕不追蹤使用者的操作行為。</p>
+
+            <h2>4. 兒童隱私保護</h2>
+            <p>本應用程式不針對 13 歲（或特定司法管轄區規定之年齡）以下的兒童收集任何可識別個人身分的資料。</p>
+
+            <h2>5. 隱私權政策之修訂</h2>
+            <p>若本隱私權政策有所變更，我們將在此頁面更新最新版本。由於本應用程式為離線工具，建議您隨時關注本頁面的最新動態。</p>
+
+            <h2>6. 聯絡我們</h2>
+            <p>若您對本隱私權政策有任何疑問，歡迎隨時透過電子郵件與我們聯繫：</p>
+            <p><strong>聯絡信箱：</strong> <a href="mailto:encorex32268@gmail.com">encorex32268@gmail.com</a></p>
+        </div>
+
+        <!-- English -->
+        <div id="lang-en" class="lang-section">
+            <h1>Privacy Policy for LocalVault</h1>
+            <p><strong>Effective Date:</strong> October 24, 2026</p>
+            <p>LocalVault ("the Application") is an offline password and data vault designed to protect your sensitive
+                information. We respect your privacy and are committed to protecting it. This Privacy Policy outlines
+                how your information is handled.</p>
+
+            <h2>1. Information Collection and Handling</h2>
+            <p><strong>We do NOT collect, transmit, store, or share any of your personal data.</strong></p>
+            <ul>
+                <li><strong>Zero Internet Permissions (100% Offline):</strong> The Application does not declare or
+                    request the <code>android.permission.INTERNET</code> permission. It is technically impossible for
+                    the Application to transmit any data over the internet.</li>
+                <li><strong>Local Encrypted Storage:</strong> All data entered into the Application (such as titles,
+                    accounts, passwords, notes, and custom fields) is stored exclusively on your local device and
+                    protected using the Android Keystore system.</li>
+            </ul>
+
+            <h2>2. Biometric Authentication</h2>
+            <p>The Application supports Android's native biometric authentication (fingerprint or face unlock):</p>
+            <ul>
+                <li>All biometric verification is processed entirely by the Android OS and device secure hardware
+                    (TEE/SE) via the BiometricPrompt API.</li>
+                <li>The Application <strong>never accesses or stores</strong> your biometric data. It only receives a
+                    cryptographic verification result (success/failure) from the system.</li>
+            </ul>
+
+            <h2>3. Third-Party Services and Analytics</h2>
+            <p>The Application contains <strong>NO</strong> third-party analytics SDKs, advertising networks, tracking
+                libraries, or external services.</p>
+
+            <h2>4. Children's Privacy</h2>
+            <p>The Application does not collect any personal data from anyone, including children under the age of 13.
+            </p>
+
+            <h2>5. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an
+                updated effective date.</p>
+
+            <h2>6. Contact Us</h2>
+            <p>If you have any questions regarding this Privacy Policy, please contact us at:</p>
+            <p><strong>Email:</strong> <a href="mailto:encorex32268@gmail.com">encorex32268@gmail.com</a></p>
+        </div>
+
+        <!-- 日本語 -->
+        <div id="lang-ja" class="lang-section">
+            <h1>プライバシーポリシー - LocalVault</h1>
+            <p><strong>発効日：</strong> 2026年10月24日</p>
+            <p>LocalVault（以下「本アプリ」）は、ユーザーの機密情報を保護するためのオフライン型パスワード・データ保管アプリです。ユーザーのプライバシーを最優先に考え、以下のようにプライバシーポリシーを定めます。
+            </p>
+
+            <h2>1. 情報の収集および利用について</h2>
+            <p><strong>本アプリはいかなる個人情報も収集、送信、保存、共有いたしません。</strong></p>
+            <ul>
+                <li><strong>完全オフライン（インターネット権限なし）：</strong> 本アプリは <code>android.permission.INTERNET</code>
+                    権限を一切要求しません。技術的にも外部サーバーへデータを送信することは不可能です。</li>
+                <li><strong>端末内ローカル暗号化保存：</strong> 登録されたアカウント、パスワード、メモなどの情報は、すべてユーザーの端末内にのみ安全に暗号化（Android Keystore
+                    を使用）されて保存されます。</li>
+            </ul>
+
+            <h2>2. 生体認証機能について</h2>
+            <p>本アプリは Android 標準の生体認証機能（指紋認証・顔認証）に対応しています：</p>
+            <ul>
+                <li>認証処理は Android OS の安全なセキュリティ基盤（BiometricPrompt API）を通じて行われます。</li>
+                <li>本アプリが生体認証データそのものに<strong>アクセスまたは保存することは一切ありません</strong>。</li>
+            </ul>
+
+            <h2>3. サードパーティ製 SDK・トラッキングについて</h2>
+            <p>本アプリには、Google Analytics、広告配信 SDK、トラッキングライブラリなどのサードパーティ製ツールは一切含まれていません。</p>
+
+            <h2>4. プライバシーポリシーの変更</h2>
+            <p>必要に応じて本プライバシーポリシーを改定する場合があります。変更があった場合は本ページにて告知します。</p>
+
+            <h2>5. お問い合わせ</h2>
+            <p>プライバシーポリシーに関するご質問やお問い合わせは、下記までお願いいたします：</p>
+            <p><strong>メール：</strong> <a href="mailto:encorex32268@gmail.com">encorex32268@gmail.com</a></p>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 LocalVault. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-switch button').forEach(el => el.classList.remove('active'));
+            document.getElementById('lang-' + lang).classList.add('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
